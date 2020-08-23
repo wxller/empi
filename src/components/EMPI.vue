@@ -1,5 +1,6 @@
 <template>
   <div class="table-wrapper">
+    <div class="title">患者主索引匹配率统计</div>
     <section class="tool-sift">
       <a-month-picker
         placeholder="选择月份"
@@ -18,9 +19,10 @@
       <span slot="registerCount"></span>
       <span slot="exactCount"></span>
       <span slot="dimMatch"></span>
-      <span slot="matchRatio" slot-scope="text">{{ text }} %</span>
+      <span slot="matchRatio" slot-scope="text">{{ text }}%</span>
     </a-table>
     <a-divider dashed />
+    <div class="title">患者主索引调用统计</div>
     <a-table
       :scroll="{ y: '30vh' }"
       :columns="empiUseColumns"
@@ -34,8 +36,14 @@
     </a-table>
     <a-divider dashed />
     <section class="charts">
-      <EMPILineChart :data="lineChartData" />
-      <EMPIPieChart :data="systemUseData" />
+      <section>
+        <div class="title">患者主索引匹配趋势图</div>
+        <EMPILineChart :data="lineChartData" />
+      </section>
+      <section>
+        <div class="title">患者主索引注册系统图</div>
+        <EMPIPieChart :data="systemUseData" />
+      </section>
     </section>
   </div>
 </template>
@@ -123,6 +131,11 @@ export default {
   .charts {
     display: flex;
     justify-content: space-around;
+    section {
+      display: flex;
+      flex: 1;
+      flex-flow: column;
+    }
   }
 }
 </style>

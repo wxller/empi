@@ -1,5 +1,6 @@
 <template>
   <div class="table-wrapper">
+    <div class="title">交互服务访问量统计</div>
     <section class="tool-sift">
       <a-month-picker placeholder="选择年月" v-model="date" @change="getInteractionTable" />
     </section>
@@ -18,8 +19,11 @@
         <a>查看日志</a>
       </span>
     </a-table>
-    <InterActionLineChart :data="lineData" />
-  </div>
+    <section>
+      <div class="title">交互服务访问量趋势图</div>
+      <InterActionLineChart :data="lineData" />
+    </section>
+  </div> 
 </template>
 
 <script>
@@ -60,7 +64,6 @@ export default {
       }
 
       const res = await getRequestData(fetchInteractionTable)({ year, month })
-      console.log(res);
       this.tableData = res
     },
     async getInteractionLineData() {

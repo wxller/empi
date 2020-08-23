@@ -37,7 +37,7 @@ const genOptions = (data) => ({
 export default {
   name: 'InterActionLineChart',
   props: {
-    data: Array,
+    data: Array
   },
   computed: {
     options() {
